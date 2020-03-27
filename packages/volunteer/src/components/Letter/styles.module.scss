@@ -1,0 +1,16 @@
+@import "../../styles/core";
+
+.letter-section {
+  display: flex;
+  justify-content: center;
+}
+
+.letter {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  line-height: 2;
+  text-align: justify;
+  text-indent: 3rem;
+}

@@ -1,0 +1,10 @@
+{
+  "extends": ["config:base"],
+  "schedule": ["before 4am on the first day of the month"],
+  "packageRules": [
+    {
+      "packageNames": ["netlify-cms-app"],
+      "rangeStrategy": "bump"
+    }
+  ]
+}

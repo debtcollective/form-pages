@@ -1,0 +1,16 @@
+{
+  "name": "@debtcollective/form-pages",
+  "private": true,
+  "repository": "https://github.com/debtcollective/form-pages.git",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {},
+  "devDependencies": {
+    "husky": "4.2.3",
+    "lint-staged": "10.0.8"
+  },
+  "husky": {
+    "hooks": {}
+  }
+}

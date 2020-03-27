@@ -1,0 +1,10 @@
+@import "../../styles/core";
+
+.progress-bar {
+  background-color: $blue;
+  height: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
