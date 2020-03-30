@@ -1,28 +1,13 @@
 import * as yup from 'yup'
 
-export const debtTypes = [
-  'Student debt',
-  'Housing debt',
-  'Medical debt',
-  'Court or bail fees',
-  'Payday loans',
-  'Auto loan',
-  'Credit card debt',
-  'Other'
+export const skills = [
+  'Legal research and assistance',
+  'Social media',
+  'Digital/Graphic design',
+  'Web development',
+  'Outreach (phone calls & emails)',
+  'Accessibility/translation/captioning'
 ]
-export const studentDebtTypes = [
-  'Federal loan',
-  'Parent Plus loan',
-  'Private loan'
-]
-export const accountStatuses = [
-  'In repayment',
-  'Late on payments',
-  'Forbearance/Deferment',
-  'Sent to collections'
-]
-
-export const unknown = 'Unknown'
 
 const phoneRegExp = /^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/
 
@@ -35,8 +20,6 @@ export const validationSchema = yup.object().shape({
     .string()
     .email('Must be a valid email')
     .required('Email is a required field'),
-  // for backwards compatibility
-  streetAddress: yup.string(),
   address: yup.object().shape({
     name: yup.string().required('Address is required'),
     administrative: yup.string(),
@@ -58,25 +41,8 @@ export const validationSchema = yup.object().shape({
     message: 'Phone number must be valid',
     excludeEmptyString: true
   }),
-  debts: yup.array().of(
-    yup.object().shape({
-      debtType: yup
-        .mixed()
-        .oneOf([...debtTypes, unknown], 'Debt type is required'),
-      studentDebtType: yup
-        .mixed()
-        .oneOf([...studentDebtTypes, unknown], 'Student debt type is required'),
-      amount: yup.number().required('Amount is required'),
-      interestRate: yup.string().required('Interest rate is required'),
-      creditor: yup.string().required('This field is required'),
-      accountStatus: yup
-        .mixed()
-        .oneOf([...accountStatuses, unknown], 'Account status is required'),
-      beingHarrased: yup.string().required('You need to answer this question'),
-      harrasmentDescription: yup.string().when('beingHarrased', {
-        is: 'true',
-        then: yup.string().required()
-      })
-    })
-  )
+  twitter: yup.string(),
+  skills: yup.array().of(yup.string()),
+  otherSkills: yup.string(),
+  username: yup.string()
 })

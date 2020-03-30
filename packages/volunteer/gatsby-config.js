@@ -6,7 +6,8 @@ var proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    title: `Why Faculty Support College For All`,
+    title: `The Debt Collective | Volunteer to help
+    the Debt Collective build power!`,
     description: `Sign the letter to show your support. #CollegeForAll`,
     author: 'Debt Collective',
     twitterUsername: `@0debtzone`,

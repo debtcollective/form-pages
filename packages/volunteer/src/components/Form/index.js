@@ -64,7 +64,7 @@ const VolunteerForm = () => {
         </Form.Group>
 
         <Form.Group controlId="streetAddress">
-          <Form.Label>Street Address</Form.Label>
+          <Form.Label>Address</Form.Label>
           <AlgoliaPlacesField
             name="address"
             register={register}
@@ -93,23 +93,72 @@ const VolunteerForm = () => {
             {errors.phoneNumber && errors.phoneNumber.message}
           </Form.Control.Feedback>
         </Form.Group>
+
+        <Form.Group controlId="twitter">
+          <Form.Label>Twitter</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="@0debtzone"
+            name="twitter"
+            ref={register}
+            isInvalid={!!errors.twitter}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.twitter && errors.twitter.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="skills">
+          <Form.Label>I have background/skills with</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="This needs to be a checkbox group"
+            name="skills"
+            ref={register}
+            isInvalid={!!errors.skills}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.skills && errors.skills.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="otherSkills">
+          <Form.Label>
+            If you have other skills you’d like to share, please specify:
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="ex. Activist"
+            name="otherSkills"
+            ref={register}
+            isInvalid={!!errors.otherSkills}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.otherSkills && errors.otherSkills.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="username">
+          <Form.Label>
+            Have you joined the Debt Collective platform? If so, share your
+            username below:
+          </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="ex. debtcollective"
+            name="username"
+            ref={register}
+            isInvalid={!!errors.username}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.username && errors.username.message}
+          </Form.Control.Feedback>
+        </Form.Group>
       </div>
 
       <Row className="mt-4">
         <Col>
-          <div className="text-left">
-            <Button
-              variant="secondary"
-              onClick={() => {
-                navigate('/app/actions')
-              }}
-            >
-              Go back
-            </Button>
-          </div>
-        </Col>
-        <Col>
-          <div className="text-right">
+          <div className="text-center">
             <Button variant="primary" type="submit">
               Save information
             </Button>
