@@ -4,3 +4,24 @@ backend:
 
 media_folder: static/img
 public_folder: /img
+
+collections:
+  - name: 'pages'
+    label: 'Pages'
+    files:
+      - file: 'src/pages/index.md'
+        label: 'Home'
+        name: 'home'
+        fields:
+          - label: 'Template Key'
+            name: 'templateKey'
+            widget: 'hidden'
+            default: 'index-page'
+          - label: 'Hero Section'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - label: 'Title'
+                name: 'title'
+                widget: 'list'
+                allow_add: true

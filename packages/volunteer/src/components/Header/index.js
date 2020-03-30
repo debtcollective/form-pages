@@ -61,15 +61,41 @@ const Header = () => {
                 <div className="d-none d-xl-flex">
                   <ul className="nav align-items-center" role="navigation">
                     <li className="nav-item">
-                      <Link to="/next-steps" className="nav-link">
-                        Next Steps
-                      </Link>
+                      <a
+                        className="nav-link"
+                        href="https://community.debtcollective.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Community
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link"
+                        href="https://tools.debtcollective.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Dispute Your Debt
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link"
+                        href="https://powerreport.debtcollective.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        The Power Report
+                      </a>
                     </li>
                     <li className="nav-item">
                       <a
                         className="nav-link"
                         href="https://debtcollective.org/donate"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Donate
                       </a>
@@ -85,6 +111,7 @@ const Header = () => {
                   href="https://community.debtcollective.org/signup"
                   target="_blank"
                   role="button"
+                  rel="noopener noreferrer"
                   className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
                 >
                   Sign up
@@ -93,6 +120,7 @@ const Header = () => {
                 <a
                   href="https://community.debtcollective.org/login"
                   target="_blank"
+                  rel="noopener noreferrer"
                   role="button"
                   className="btn btn-primary btn-lg d-none d-md-block btn-session "
                 >
@@ -102,6 +130,7 @@ const Header = () => {
                 <a
                   href="https://community.debtcollective.org/login"
                   target="_blank"
+                  rel="noopener noreferrer"
                   role="button"
                   className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
                 >
@@ -116,15 +145,41 @@ const Header = () => {
         <div id="slider-nav" className="slider-nav d-xl-none">
           <ul className="nav flex-column" role="navigation">
             <li className="nav-item">
-              <Link to="/next-steps" className="nav-link">
-                Next Steps
-              </Link>
+              <a
+                className="nav-link"
+                href="https://community.debtcollective.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Community
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                href="https://tools.debtcollective.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Dispute Your Debt
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                href="https://powerreport.debtcollective.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The Power Report
+              </a>
             </li>
             <li className="nav-item">
               <a
                 className="nav-link"
                 href="https://debtcollective.org/donate"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Donate
               </a>

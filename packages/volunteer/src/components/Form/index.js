@@ -1,9 +1,7 @@
 // @flow
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
-import _ from 'lodash'
 import { navigate } from 'gatsby'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import { AlgoliaPlacesField, PhoneNumberField } from './fields'
@@ -36,7 +34,7 @@ const VolunteerForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="action-detail">
-      <div className="mt-4">
+      <div>
         <Form.Group controlId="fullName">
           <Form.Label>Full name</Form.Label>
           <Form.Control
