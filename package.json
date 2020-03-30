@@ -5,7 +5,9 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "yarn workspaces run build"
+  },
   "devDependencies": {
     "husky": "4.2.3",
     "lint-staged": "10.0.8"
