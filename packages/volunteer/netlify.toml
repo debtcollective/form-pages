@@ -1,6 +1,6 @@
 [build]
   base = "packages/volunteer"
-  command = "npm run build"
+  command = "yarn build"
   functions = "lambda"
   ignore = "git diff --quiet HEAD^ HEAD packages/volunteer"
   publish = "public"
