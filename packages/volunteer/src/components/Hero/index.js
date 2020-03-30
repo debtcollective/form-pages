@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Button } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignature } from "@fortawesome/free-solid-svg-icons";
-import styles from "./styles.module.scss";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Button } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignature } from '@fortawesome/free-solid-svg-icons'
+import styles from './styles.module.scss'
 
 const Hero = ({ title, button, onButtonClick }) => {
-  let ctaButton = null;
+  let ctaButton = null
 
   if (button) {
     ctaButton = (
@@ -14,7 +14,7 @@ const Hero = ({ title, button, onButtonClick }) => {
         <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" width="32" />
         {button}
       </Button>
-    );
+    )
   }
 
   return (
@@ -27,13 +27,13 @@ const Hero = ({ title, button, onButtonClick }) => {
         {ctaButton}
       </div>
     </section>
-  );
-};
+  )
+}
 
 Hero.propTypes = {
   title: PropTypes.string,
   button: PropTypes.string,
-  onButtonClick: PropTypes.func,
-};
+  onButtonClick: PropTypes.func
+}
 
-export default Hero;
+export default Hero

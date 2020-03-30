@@ -3,20 +3,15 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import _ from 'lodash'
 
-import { Hero, Layout, ReadProgress } from '../components'
+import { Hero, Layout, Content, ReadProgress } from '../components'
 
 export const IndexPageTemplate = ({ hero }) => {
   return (
     <>
-      <Hero title={hero.title} button={hero.button} signersCount={0} />
-      <p className="text-center mb-0 mt-2">
-        Sign and join <strong>{0}</strong> other academics.
-      </p>
-      <p className="text-center text-muted">
-        <small className="font-italic">
-          after you sign, you will be offered some Next Steps organizing ideas.
-        </small>
-      </p>
+      <Hero title={hero.title} />
+      <Content>
+        <p>test</p>
+      </Content>
       <ReadProgress />
     </>
   )
@@ -61,12 +56,6 @@ export const pageQuery = graphql`
         hero {
           title
           button
-        }
-        letter {
-          text
-        }
-        signers {
-          list
         }
       }
     }
