@@ -2,10 +2,9 @@
 
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { navigate } from 'gatsby'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import { AlgoliaPlacesField, PhoneNumberField } from './fields'
-import { validationSchema } from './schema'
+import { validationSchema, skills } from './schema'
 
 const VolunteerForm = () => {
   const {
@@ -32,11 +31,15 @@ const VolunteerForm = () => {
     console.log(data)
   }
 
+  console.log(errors)
+
+  const required = <span style={{ color: 'red' }}>*</span>
+
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} className="action-detail">
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <Form.Group controlId="fullName">
-          <Form.Label>Full name</Form.Label>
+          <Form.Label>Full name{required}</Form.Label>
           <Form.Control
             type="text"
             name="fullName"
@@ -50,7 +53,7 @@ const VolunteerForm = () => {
         </Form.Group>
 
         <Form.Group controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Email{required}</Form.Label>
           <Form.Control
             type="text"
             placeholder="betsy.devos@ed.gov"
@@ -64,7 +67,7 @@ const VolunteerForm = () => {
         </Form.Group>
 
         <Form.Group controlId="streetAddress">
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Address{required}</Form.Label>
           <AlgoliaPlacesField
             name="address"
             register={register}
@@ -80,7 +83,7 @@ const VolunteerForm = () => {
         </Form.Group>
 
         <Form.Group controlId="phoneNumber">
-          <Form.Label>Phone number</Form.Label>
+          <Form.Label>Phone number{required}</Form.Label>
           <PhoneNumberField
             name="phoneNumber"
             register={register}
@@ -109,14 +112,19 @@ const VolunteerForm = () => {
         </Form.Group>
 
         <Form.Group controlId="skills">
-          <Form.Label>I have background/skills with</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="This needs to be a checkbox group"
-            name="skills"
-            ref={register}
-            isInvalid={!!errors.skills}
-          />
+          <Form.Label>I have background/skills with:</Form.Label>
+          {skills.map(skill => (
+            <Form.Check
+              type="checkbox"
+              key={skill}
+              id={`skills-${skill}`}
+              name="skills"
+              label={skill}
+              ref={register}
+              isInvalid={!!errors.skills}
+              value={skill}
+            ></Form.Check>
+          ))}
           <Form.Control.Feedback type="invalid">
             {errors.skills && errors.skills.message}
           </Form.Control.Feedback>
@@ -160,7 +168,7 @@ const VolunteerForm = () => {
         <Col>
           <div className="text-center">
             <Button variant="primary" type="submit">
-              Save information
+              Submit
             </Button>
           </div>
         </Col>

@@ -34,7 +34,10 @@ export const validationSchema = yup.object().shape({
       lng: yup.number()
     }),
     postcode: yup.string(),
-    postcodes: yup.array().of(yup.string()),
+    postcodes: yup
+      .array()
+      .of(yup.string())
+      .nullable(),
     value: yup.string()
   }),
   phoneNumber: yup.string().matches(phoneRegExp, {
