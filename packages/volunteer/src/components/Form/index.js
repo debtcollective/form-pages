@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import Recaptcha from 'react-google-recaptcha'
-import { AlgoliaPlacesField, PhoneNumberField } from './fields'
+import { PhoneNumberField } from './fields'
 import { validationSchema, skills } from './schema'
 
 const RECAPTCHA_KEY =
@@ -31,18 +31,13 @@ const VolunteerForm = ({ name }) => {
   })
 
   const [submitted, setSubmitted] = useState(false)
+  const [recaptchaToken, setRecaptchaToken] = useState(null)
 
   const onSubmit = data => {
-    // get address information from Algolia places
-    const {
-      city,
-      country,
-      county,
-      latlng: { lat, lng },
-      postcode,
-      postcodes,
-      value: address
-    } = data.address
+    // Don't submit unless it verifies the captcha
+    if (!recaptchaToken) {
+      return false
+    }
 
     fetch('/', {
       method: 'POST',
@@ -52,14 +47,8 @@ const VolunteerForm = ({ name }) => {
       },
       body: encode({
         'form-name': name,
-        ...data,
-        address,
-        city,
-        country,
-        county,
-        latlng: `${lat}, ${lng}`,
-        postcode,
-        postcodes
+        'g-recaptcha-response': recaptchaToken,
+        ...data
       })
     })
       .then(() => {
@@ -69,8 +58,6 @@ const VolunteerForm = ({ name }) => {
       })
       .catch(e => Sentry.captureException(e))
   }
-
-  console.log(errors)
 
   const required = <span style={{ color: 'red' }}>*</span>
 
@@ -98,6 +85,64 @@ const VolunteerForm = ({ name }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
+        <Form.Group controlId="city">
+          <Form.Label>City{required}</Form.Label>
+          <Form.Control
+            type="text"
+            name="city"
+            placeholder="Washington"
+            ref={register}
+            isInvalid={!!errors.city}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.city && errors.city.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="state">
+          <Form.Label>State{required}</Form.Label>
+          <Form.Control
+            type="text"
+            name="state"
+            placeholder="D.C"
+            ref={register}
+            isInvalid={!!errors.state}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors.state && errors.state.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="zip">
+          <Form.Label>Zip{required}</Form.Label>
+          <Form.Control
+            type="text"
+            name="zip"
+            placeholder="20202"
+            ref={register}
+            isInvalid={!!errors.zip}
+          />
+          {!!errors.city && <div className="is-invalid" />}
+          <Form.Control.Feedback type="invalid">
+            {errors.zip && errors.zip.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="country">
+          <Form.Label>Country{required}</Form.Label>
+          <Form.Control
+            type="text"
+            name="country"
+            placeholder="United States"
+            ref={register}
+            isInvalid={!!errors.country}
+          />
+          {!!errors.city && <div className="is-invalid" />}
+          <Form.Control.Feedback type="invalid">
+            {errors.country && errors.country.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
         <Form.Group controlId="email">
           <Form.Label>Email{required}</Form.Label>
           <Form.Control
@@ -109,21 +154,6 @@ const VolunteerForm = ({ name }) => {
           />
           <Form.Control.Feedback type="invalid">
             {errors.email && errors.email.message}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group controlId="streetAddress">
-          <Form.Label>Address{required}</Form.Label>
-          <AlgoliaPlacesField
-            name="address"
-            register={register}
-            unregister={unregister}
-            setValue={setValue}
-            isInvalid={!!errors.address}
-          />
-          {!!errors.address && <div className="is-invalid" />}
-          <Form.Control.Feedback type="invalid">
-            {!!errors.address && 'Select a valid address'}
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -215,7 +245,7 @@ const VolunteerForm = ({ name }) => {
           <Recaptcha
             className="field"
             sitekey={RECAPTCHA_KEY}
-            onChange={value => setValue('g-recaptcha-response', value, true)}
+            onChange={value => setRecaptchaToken(value)}
           />
           <Form.Control
             type="hidden"

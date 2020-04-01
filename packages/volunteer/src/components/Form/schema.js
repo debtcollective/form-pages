@@ -20,26 +20,10 @@ export const validationSchema = yup.object().shape({
     .string()
     .email('Must be a valid email')
     .required('Email is a required field'),
-  address: yup.object().shape({
-    name: yup.string().required('Address is required'),
-    administrative: yup.string(),
-    county: yup.string(),
-    city: yup.string(),
-    suburb: yup.string(),
-    country: yup.string(),
-    countryCode: yup.string(),
-    type: yup.string(),
-    latlng: yup.object().shape({
-      lat: yup.number(),
-      lng: yup.number()
-    }),
-    postcode: yup.string(),
-    postcodes: yup
-      .array()
-      .of(yup.string())
-      .nullable(),
-    value: yup.string()
-  }),
+  city: yup.string().required('City is a required field'),
+  state: yup.string().required('State is a required field'),
+  zip: yup.string().required('Zip is a required field'),
+  country: yup.string().required('Country is a required field'),
   phoneNumber: yup.string().matches(phoneRegExp, {
     message: 'Phone number must be valid',
     excludeEmptyString: true
@@ -47,6 +31,5 @@ export const validationSchema = yup.object().shape({
   twitter: yup.string(),
   skills: yup.array().of(yup.string()),
   otherSkills: yup.string(),
-  username: yup.string(),
-  'g-recaptcha-response': yup.string().required('Verify you are human')
+  username: yup.string()
 })
