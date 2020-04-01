@@ -25,11 +25,10 @@ export const IndexPageTemplate = ({ hero }) => {
         instead.
       </p>
       <p className="text-center mb-0 mt-2">
-        We’ll review your submission and get back to you soon.{' '}
         <i>We will keep your information as secure and private as possible.</i>
       </p>
       <Content>
-        <Form />
+        <Form name="volunteers" />
       </Content>
       <ReadProgress />
     </>

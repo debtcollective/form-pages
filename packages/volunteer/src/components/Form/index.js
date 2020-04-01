@@ -1,6 +1,7 @@
 // @flow
+/* global Sentry */
 
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 import { Row, Col, Button, Form } from 'react-bootstrap'
@@ -18,12 +19,30 @@ function encode(data) {
 }
 
 const VolunteerForm = ({ name }) => {
-  const { register, handleSubmit, setValue, unregister, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    unregister,
+    errors,
+    reset
+  } = useForm({
     validationSchema: validationSchema
   })
 
+  const [submitted, setSubmitted] = useState(false)
+
   const onSubmit = data => {
-    debugger
+    // get address information from Algolia places
+    const {
+      city,
+      country,
+      county,
+      latlng: { lat, lng },
+      postcode,
+      postcodes,
+      value: address
+    } = data.address
 
     fetch('/', {
       method: 'POST',
@@ -33,15 +52,22 @@ const VolunteerForm = ({ name }) => {
       },
       body: encode({
         'form-name': name,
-        ...data
+        ...data,
+        address,
+        city,
+        country,
+        county,
+        latlng: `${lat}, ${lng}`,
+        postcode,
+        postcodes
       })
     })
-      .then(response => {
-        console.log(response)
+      .then(() => {
+        setSubmitted(true)
+        reset()
+        setValue('phoneNumber', null)
       })
-      .catch(response => {
-        console.log(response)
-      })
+      .catch(e => Sentry.captureException(e))
   }
 
   console.log(errors)
@@ -207,8 +233,8 @@ const VolunteerForm = ({ name }) => {
       <Row className="mt-4">
         <Col>
           <div className="text-center">
-            <Button variant="primary" type="submit">
-              Submit
+            <Button variant="primary" type="submit" disabled={submitted}>
+              {submitted ? 'Thanks! We’ll be in touch soon :)' : 'Submit'}
             </Button>
           </div>
         </Col>
@@ -218,7 +244,7 @@ const VolunteerForm = ({ name }) => {
 }
 
 VolunteerForm.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string.isRequired
 }
 
 VolunteerForm.defaultValues = {}

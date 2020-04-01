@@ -4,6 +4,8 @@ require('dotenv').config({
 
 var proxy = require('http-proxy-middleware')
 
+const deployContext = process.env.DEPLOY_CONTEXT
+
 module.exports = {
   siteMetadata: {
     title: `The Debt Collective | Volunteer to help
@@ -96,6 +98,13 @@ module.exports = {
       options: {
         head: true,
         trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-sentry',
+      options: {
+        dsn: process.env.SENTRY_DSN,
+        environment: deployContext
       }
     },
     {
