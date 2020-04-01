@@ -247,16 +247,6 @@ const VolunteerForm = ({ name }) => {
             sitekey={RECAPTCHA_KEY}
             onChange={value => setRecaptchaToken(value)}
           />
-          <Form.Control
-            type="hidden"
-            name="g-recaptcha-response"
-            ref={register}
-            isInvalid={!!errors['g-recaptcha-response']}
-          />
-          <Form.Control.Feedback type="invalid">
-            {errors['g-recaptcha-response'] &&
-              errors['g-recaptcha-response'].message}
-          </Form.Control.Feedback>
         </Form.Group>
       </div>
 
