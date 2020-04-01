@@ -47,5 +47,6 @@ export const validationSchema = yup.object().shape({
   twitter: yup.string(),
   skills: yup.array().of(yup.string()),
   otherSkills: yup.string(),
-  username: yup.string()
+  username: yup.string(),
+  'g-recaptcha-response': yup.string().required('Verify you are human')
 })

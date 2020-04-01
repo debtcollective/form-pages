@@ -52,7 +52,7 @@ const IndexPage = ({ data }) => {
   } = data
 
   return (
-    <Layout title="Why Faculty Support College For All · Sign the letter">
+    <Layout>
       <IndexPageTemplate {...frontmatter} />
     </Layout>
   )

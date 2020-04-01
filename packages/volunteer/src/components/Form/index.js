@@ -1,34 +1,47 @@
 // @flow
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 import { Row, Col, Button, Form } from 'react-bootstrap'
+import Recaptcha from 'react-google-recaptcha'
 import { AlgoliaPlacesField, PhoneNumberField } from './fields'
 import { validationSchema, skills } from './schema'
 
-const VolunteerForm = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    unregister,
-    errors
-  } = useForm({
+const RECAPTCHA_KEY =
+  process.env.SITE_RECAPTCHA_KEY || process.env.GATSBY_SITE_RECAPTCHA_KEY
+
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
+const VolunteerForm = ({ name }) => {
+  const { register, handleSubmit, setValue, unregister, errors } = useForm({
     validationSchema: validationSchema
   })
 
-  /**
-   * Initial Values
-   * used for controlled components to have a defaultValue
-   * and for conditional rendering of components
-   */
-  const phoneNumber = watch('phoneNumber')
-  const addressValue = watch('address')
-  const address = addressValue && addressValue.value
-
   const onSubmit = data => {
-    console.log(data)
+    debugger
+
+    fetch('/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: encode({
+        'form-name': name,
+        ...data
+      })
+    })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(response => {
+        console.log(response)
+      })
   }
 
   console.log(errors)
@@ -36,7 +49,14 @@ const VolunteerForm = () => {
   const required = <span style={{ color: 'red' }}>*</span>
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      name={name}
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="__bf"
+      data-netlify-recaptcha="true"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <div>
         <Form.Group controlId="fullName">
           <Form.Label>Full name{required}</Form.Label>
@@ -74,7 +94,6 @@ const VolunteerForm = () => {
             unregister={unregister}
             setValue={setValue}
             isInvalid={!!errors.address}
-            defaultValue={address}
           />
           {!!errors.address && <div className="is-invalid" />}
           <Form.Control.Feedback type="invalid">
@@ -89,7 +108,6 @@ const VolunteerForm = () => {
             register={register}
             unregister={unregister}
             setValue={setValue}
-            defaultValue={phoneNumber}
             isInvalid={!!errors.phoneNumber}
           />
           <Form.Control.Feedback type="invalid">
@@ -162,6 +180,28 @@ const VolunteerForm = () => {
             {errors.username && errors.username.message}
           </Form.Control.Feedback>
         </Form.Group>
+
+        <Form.Group
+          controlId="recaptcha"
+          className="text-center d-flex flex-column align-items-center"
+        >
+          {/* https://docs.netlify.com/forms/spam-filters/#custom-recaptcha-2 */}
+          <Recaptcha
+            className="field"
+            sitekey={RECAPTCHA_KEY}
+            onChange={value => setValue('g-recaptcha-response', value, true)}
+          />
+          <Form.Control
+            type="hidden"
+            name="g-recaptcha-response"
+            ref={register}
+            isInvalid={!!errors['g-recaptcha-response']}
+          />
+          <Form.Control.Feedback type="invalid">
+            {errors['g-recaptcha-response'] &&
+              errors['g-recaptcha-response'].message}
+          </Form.Control.Feedback>
+        </Form.Group>
       </div>
 
       <Row className="mt-4">
@@ -173,11 +213,13 @@ const VolunteerForm = () => {
           </div>
         </Col>
       </Row>
-    </Form>
+    </form>
   )
 }
 
-VolunteerForm.propTypes = {}
+VolunteerForm.propTypes = {
+  name: PropTypes.string
+}
 
 VolunteerForm.defaultValues = {}
 
