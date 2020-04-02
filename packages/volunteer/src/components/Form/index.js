@@ -33,10 +33,7 @@ const VolunteerForm = ({ name }) => {
   const [submitted, setSubmitted] = useState(false)
   const [recaptchaToken, setRecaptchaToken] = useState(null)
 
-  debugger
-
   // Watching country to pass it to state dropdown
-
   const country = watch('country')
 
   const onSubmit = data => {
