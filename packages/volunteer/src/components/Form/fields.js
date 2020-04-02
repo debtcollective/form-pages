@@ -195,7 +195,7 @@ export const RegionDropdownField = ({
 }
 
 RegionDropdownField.propTypes = {
-  country: PropTypes.string.isRequired,
+  country: PropTypes.string,
   defaultValue: PropTypes.string,
   name: PropTypes.string,
   register: PropTypes.func,
