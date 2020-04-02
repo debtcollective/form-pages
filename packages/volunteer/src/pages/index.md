@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 hero:
-  title: Volunteer to help <br/>the Debt Collective build power! "Test"
+  title: Volunteer to help <br/>the Debt Collective build power!
   subtitle: >-
     Submit this form if you’d like to get involved in the Debt Collective. If
     you are looking to start a local group/collective, please email
