@@ -7,4 +7,4 @@ import IndexPagePreview from "./preview-templates/IndexPagePreview";
 CMS.registerMediaLibrary(uploadcare);
 CMS.registerMediaLibrary(cloudinary);
 
-CMS.registerPreviewTemplate("index-page", IndexPagePreview);
+CMS.registerPreviewTemplate("home", IndexPagePreview);
