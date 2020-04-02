@@ -23,5 +23,5 @@ collections:
             fields:
               - label: 'Title'
                 name: 'title'
-                widget: 'list'
-                allow_add: true
+                widget: 'string'
+                default: 'Volunteer to help the Debt Collective build power!'
