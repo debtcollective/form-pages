@@ -9,7 +9,7 @@ collections:
   - name: 'pages'
     label: 'Pages'
     files:
-      - file: 'src/pages/index.md'
+      - file: 'packages/volunteer/src/pages/index.md'
         label: 'Home'
         name: 'home'
         fields:
