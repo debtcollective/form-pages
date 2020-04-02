@@ -13377,6 +13377,11 @@ react-context-toolbox@^2.0.2:
   resolved "https://registry.yarnpkg.com/react-context-toolbox/-/react-context-toolbox-2.0.2.tgz#35637287cb23f801e6ed802c2bb7a97e1f04e3fb"
   integrity sha512-tY4j0imkYC3n5ZlYSgFkaw7fmlCp3IoQQ6DxpqeNHzcD0hf+6V+/HeJxviLUZ1Rv1Yn3N3xyO2EhkkZwHn0m1A==
 
+react-country-region-selector@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-country-region-selector/-/react-country-region-selector-2.1.0.tgz#34914b0ff4697a09db6afc6667f49359ca430589"
+  integrity sha512-OGpWtUbTJopnpHhinOIDjOLmXQIHvu/CHHxUWM6KoGtDdhuVL/MWAWWyYPYn4SSh5Tm7Xq4NwNVoJ0F9qUe7KQ==
+
 react-datetime@^2.16.3:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/react-datetime/-/react-datetime-2.16.3.tgz#7f9ac7d4014a939c11c761d0c22d1fb506cb505e"

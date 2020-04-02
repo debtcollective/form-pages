@@ -9,8 +9,6 @@ export const skills = [
   'Accessibility/translation/captioning'
 ]
 
-const phoneRegExp = /^(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$/
-
 export const validationSchema = yup.object().shape({
   fullName: yup
     .string()
@@ -24,10 +22,10 @@ export const validationSchema = yup.object().shape({
   state: yup.string().required('State is a required field'),
   zip: yup.string().required('Zip is a required field'),
   country: yup.string().required('Country is a required field'),
-  phoneNumber: yup.string().matches(phoneRegExp, {
-    message: 'Phone number must be valid',
-    excludeEmptyString: true
-  }),
+  phoneNumber: yup
+    .string()
+    .required('Phone number is a required field')
+    .min(8, 'Phone number must be at least 8 characters'),
   twitter: yup.string(),
   skills: yup.array().of(yup.string()),
   otherSkills: yup.string(),
