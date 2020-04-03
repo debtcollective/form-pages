@@ -1,11 +1,12 @@
 /* global Sentry */
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import NumberFormat from 'react-number-format'
 import AlgoliaPlaces from 'algolia-places-react'
 import classNames from 'classnames'
 import { Form } from 'react-bootstrap'
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector'
 
 export const AlgoliaPlacesField = ({
   name,
@@ -118,4 +119,87 @@ PhoneNumberField.propTypes = {
   unregister: PropTypes.func,
   setValue: PropTypes.func,
   defaultValue: PropTypes.string
+}
+
+export const CountryDropdownField = ({
+  name,
+  register,
+  unregister,
+  setValue,
+  defaultValue,
+  isInvalid,
+  ...props
+}) => {
+  const cssClasses = classNames('form-control', { 'is-invalid': isInvalid })
+  const [country, setCountry] = useState(defaultValue)
+
+  useEffect(() => {
+    register(name)
+    return () => unregister(name)
+  }, [name, register, unregister])
+
+  return (
+    <CountryDropdown
+      class={cssClasses}
+      name={name}
+      value={country}
+      onChange={value => {
+        setCountry(value)
+        setValue(name, value, true)
+      }}
+      {...props}
+    />
+  )
+}
+
+CountryDropdownField.propTypes = {
+  name: PropTypes.string,
+  register: PropTypes.func,
+  unregister: PropTypes.func,
+  setValue: PropTypes.func,
+  defaultValue: PropTypes.string,
+  isInvalid: PropTypes.bool
+}
+
+export const RegionDropdownField = ({
+  country,
+  defaultValue,
+  name,
+  register,
+  setValue,
+  unregister,
+  isInvalid,
+  ...props
+}) => {
+  const cssClasses = classNames('form-control', { 'is-invalid': isInvalid })
+  const [region, setRegion] = useState(defaultValue)
+
+  useEffect(() => {
+    register(name)
+    return () => unregister(name)
+  }, [name, register, unregister])
+
+  return (
+    <RegionDropdown
+      class={cssClasses}
+      name={name}
+      country={country}
+      value={region}
+      onChange={value => {
+        setRegion(value)
+        setValue(name, value, true)
+      }}
+      {...props}
+    />
+  )
+}
+
+RegionDropdownField.propTypes = {
+  country: PropTypes.string,
+  defaultValue: PropTypes.string,
+  name: PropTypes.string,
+  register: PropTypes.func,
+  setValue: PropTypes.func,
+  unregister: PropTypes.func,
+  isInvalid: PropTypes.bool
 }

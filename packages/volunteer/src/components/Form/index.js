@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 import { Row, Col, Button, Form } from 'react-bootstrap'
 import Recaptcha from 'react-google-recaptcha'
-import { PhoneNumberField } from './fields'
+import { CountryDropdownField, RegionDropdownField } from './fields'
 import { validationSchema, skills } from './schema'
 
 const RECAPTCHA_KEY =
@@ -25,13 +25,16 @@ const VolunteerForm = ({ name }) => {
     setValue,
     unregister,
     errors,
+    watch,
     reset
   } = useForm({
     validationSchema: validationSchema
   })
-
   const [submitted, setSubmitted] = useState(false)
   const [recaptchaToken, setRecaptchaToken] = useState(null)
+
+  // Watching country to pass it to state dropdown
+  const country = watch('country')
 
   const onSubmit = data => {
     // Don't submit unless it verifies the captcha
@@ -85,6 +88,38 @@ const VolunteerForm = ({ name }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
+        <Form.Group controlId="country">
+          <Form.Label>Country{required}</Form.Label>
+          <CountryDropdownField
+            name="country"
+            register={register}
+            unregister={unregister}
+            setValue={setValue}
+            priorityOptions={['US']}
+            isInvalid={!!errors.fullName}
+          />
+          {!!errors.country && <div className="is-invalid" />}
+          <Form.Control.Feedback type="invalid">
+            {errors.country && errors.country.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="state">
+          <Form.Label>State{required}</Form.Label>
+          <RegionDropdownField
+            name="state"
+            country={country}
+            register={register}
+            unregister={unregister}
+            setValue={setValue}
+            isInvalid={!!errors.fullName}
+          />
+          {!!errors.state && <div className="is-invalid" />}
+          <Form.Control.Feedback type="invalid">
+            {errors.state && errors.state.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
         <Form.Group controlId="city">
           <Form.Label>City{required}</Form.Label>
           <Form.Control
@@ -96,20 +131,6 @@ const VolunteerForm = ({ name }) => {
           />
           <Form.Control.Feedback type="invalid">
             {errors.city && errors.city.message}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group controlId="state">
-          <Form.Label>State{required}</Form.Label>
-          <Form.Control
-            type="text"
-            name="state"
-            placeholder="D.C"
-            ref={register}
-            isInvalid={!!errors.state}
-          />
-          <Form.Control.Feedback type="invalid">
-            {errors.state && errors.state.message}
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -125,21 +146,6 @@ const VolunteerForm = ({ name }) => {
           {!!errors.city && <div className="is-invalid" />}
           <Form.Control.Feedback type="invalid">
             {errors.zip && errors.zip.message}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group controlId="country">
-          <Form.Label>Country{required}</Form.Label>
-          <Form.Control
-            type="text"
-            name="country"
-            placeholder="United States"
-            ref={register}
-            isInvalid={!!errors.country}
-          />
-          {!!errors.city && <div className="is-invalid" />}
-          <Form.Control.Feedback type="invalid">
-            {errors.country && errors.country.message}
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -159,11 +165,10 @@ const VolunteerForm = ({ name }) => {
 
         <Form.Group controlId="phoneNumber">
           <Form.Label>Phone number{required}</Form.Label>
-          <PhoneNumberField
+          <Form.Control
+            type="tel"
             name="phoneNumber"
-            register={register}
-            unregister={unregister}
-            setValue={setValue}
+            ref={register}
             isInvalid={!!errors.phoneNumber}
           />
           <Form.Control.Feedback type="invalid">
