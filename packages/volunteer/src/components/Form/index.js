@@ -274,6 +274,7 @@ const VolunteerForm = ({ name, modal }) => {
                 value={skill}
               ></Form.Check>
             ))}
+            {!!errors.city && <div className="is-invalid" />}
             <Form.Control.Feedback type="invalid">
               {errors.skills && errors.skills.message}
             </Form.Control.Feedback>

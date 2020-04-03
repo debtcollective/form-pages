@@ -18,3 +18,9 @@
 .form-control.form-control {
   color: $black;
 }
+
+.form-check {
+  .invalid-feedback {
+    display: none !important;
+  }
+}
