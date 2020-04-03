@@ -4,10 +4,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
-import { Row, Col, Button, Form } from 'react-bootstrap'
+import { Button, Form, InputGroup } from 'react-bootstrap'
 import Recaptcha from 'react-google-recaptcha'
 import { CountryDropdownField, RegionDropdownField } from './fields'
 import { validationSchema, skills } from './schema'
+import './styles.scss'
 
 const RECAPTCHA_KEY =
   process.env.SITE_RECAPTCHA_KEY || process.env.GATSBY_SITE_RECAPTCHA_KEY
@@ -73,7 +74,8 @@ const VolunteerForm = ({ name }) => {
       data-netlify-recaptcha="true"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div>
+      <div className="form-section">
+        <h3 className="mb-3">Personal information</h3>
         <Form.Group controlId="fullName">
           <Form.Label>Full name{required}</Form.Label>
           <Form.Control
@@ -176,20 +178,26 @@ const VolunteerForm = ({ name }) => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="twitter">
-          <Form.Label>Twitter</Form.Label>
+        <Form.Group controlId="username">
+          <Form.Label>
+            Have you joined The Debt Collective platform? If so, share your
+            username below:
+          </Form.Label>
           <Form.Control
             type="text"
-            placeholder="@0debtzone"
-            name="twitter"
+            placeholder="ex. debtcollective"
+            name="username"
             ref={register}
-            isInvalid={!!errors.twitter}
+            isInvalid={!!errors.username}
           />
           <Form.Control.Feedback type="invalid">
-            {errors.twitter && errors.twitter.message}
+            {errors.username && errors.username.message}
           </Form.Control.Feedback>
         </Form.Group>
+      </div>
 
+      <div className="form-section mt-4">
+        <h3>Skills</h3>
         <Form.Group controlId="skills">
           <Form.Label>I have background/skills with:</Form.Label>
           {skills.map(skill => (
@@ -224,46 +232,84 @@ const VolunteerForm = ({ name }) => {
             {errors.otherSkills && errors.otherSkills.message}
           </Form.Control.Feedback>
         </Form.Group>
+      </div>
 
-        <Form.Group controlId="username">
-          <Form.Label>
-            Have you joined the Debt Collective platform? If so, share your
-            username below:
-          </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="ex. debtcollective"
-            name="username"
-            ref={register}
-            isInvalid={!!errors.username}
-          />
+      <div className="form-section mt-4">
+        <h3 className="mb-3">Social networks</h3>
+        <Form.Group controlId="twitter">
+          <InputGroup className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="basic-addon1">twitter.com/</InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control
+              type="text"
+              placeholder="0debtzone"
+              name="twitter"
+              ref={register}
+              isInvalid={!!errors.twitter}
+            />
+          </InputGroup>
           <Form.Control.Feedback type="invalid">
-            {errors.username && errors.username.message}
+            {errors.twitter && errors.twitter.message}
           </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group
-          controlId="recaptcha"
-          className="text-center d-flex flex-column align-items-center"
-        >
-          {/* https://docs.netlify.com/forms/spam-filters/#custom-recaptcha-2 */}
-          <Recaptcha
-            className="field"
-            sitekey={RECAPTCHA_KEY}
-            onChange={value => setRecaptchaToken(value)}
-          />
+        <Form.Group controlId="facebook">
+          <InputGroup className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="basic-addon1">facebook.com/</InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control
+              type="text"
+              placeholder="DebtCollective"
+              name="facebook"
+              ref={register}
+              isInvalid={!!errors.twitter}
+            />
+          </InputGroup>
+          <Form.Control.Feedback type="invalid">
+            {errors.twitter && errors.twitter.message}
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="facebook">
+          <InputGroup className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="basic-addon1">
+                instagram.com/
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control
+              type="text"
+              placeholder="DebtCollective"
+              name="instagram"
+              ref={register}
+              isInvalid={!!errors.twitter}
+            />
+          </InputGroup>
+          <Form.Control.Feedback type="invalid">
+            {errors.twitter && errors.twitter.message}
+          </Form.Control.Feedback>
         </Form.Group>
       </div>
 
-      <Row className="mt-4">
-        <Col>
-          <div className="text-center">
-            <Button variant="primary" type="submit" disabled={submitted}>
-              {submitted ? 'Thanks! We’ll be in touch soon :)' : 'Submit'}
-            </Button>
-          </div>
-        </Col>
-      </Row>
+      <Form.Group
+        controlId="recaptcha"
+        className="text-center d-flex flex-column align-items-center"
+      >
+        {/* https://docs.netlify.com/forms/spam-filters/#custom-recaptcha-2 */}
+        <Recaptcha
+          className="field"
+          sitekey={RECAPTCHA_KEY}
+          onChange={value => setRecaptchaToken(value)}
+        />
+      </Form.Group>
+
+      <div className="text-center">
+        <Button variant="primary" type="submit" disabled={submitted}>
+          {submitted ? 'Thanks! We’ll be in touch soon :)' : 'Submit'}
+        </Button>
+      </div>
     </form>
   )
 }

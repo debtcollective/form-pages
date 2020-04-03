@@ -8,8 +8,8 @@ const deployContext = process.env.DEPLOY_CONTEXT
 
 module.exports = {
   siteMetadata: {
-    title: `Volunteer to help the Debt Collective build power! | The Debt Collective`,
-    description: `If you’d like to get involved in the Debt Collective or if you are looking to start a local group/collective, keep reading.`,
+    title: `Volunteer to help The Debt Collective build power! | The Debt Collective`,
+    description: `If you’d like to get involved in The Debt Collective or if you are looking to start a local group/collective, keep reading.`,
     author: 'Debt Collective',
     twitterUsername: `@0debtzone`,
     facebookPage: 'https://www.facebook.com/DebtCollective',

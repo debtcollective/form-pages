@@ -16,12 +16,15 @@ export const IndexPageTemplate = ({ hero }) => {
     <>
       <Hero title={hero.title} />
       <p className="text-center mb-0 mt-2">
-        Submit this form if you’d like to get involved in the Debt Collective.
+        Submit this form if you’d like to get involved in The Debt Collective.
+        Someone will be in touch with you soon!
+      </p>
+      <p className="text-center mb-0">
         If you are looking to start a local group/collective, please email{' '}
         <Mailto email="winter@debtcollective.org">
           winter@debtcollective.org
-        </Mailto>{' '}
-        instead.
+        </Mailto>
+        .
       </p>
       <p className="text-center mb-0 mt-2">
         <i>We will keep your information as secure and private as possible.</i>
