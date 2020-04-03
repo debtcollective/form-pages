@@ -16,7 +16,7 @@ hero:
 modal:
   title: Thanks for filling out our form!
   content: >-
-    We'll be in touch soon 😀. Meanwhile, visit our community.
+    We'll be in touch soon 🙂. Visit our community platform to connect with other Debt Collective members.
   actionButton: Go to community
   redirectUrl: https://community.debtcolelctive.org
 ---

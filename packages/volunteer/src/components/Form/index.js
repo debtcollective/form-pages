@@ -115,7 +115,7 @@ const VolunteerForm = ({ name, modal }) => {
   }
 
   const afterSubmitRedirect = () => {
-    window.location = process.env.AFTER_SUBMIT_URL
+    window.location = modal.redirectUrl
   }
 
   const required = <span style={{ color: 'red' }}>*</span>
@@ -386,7 +386,8 @@ VolunteerForm.propTypes = {
   modal: PropTypes.shape({
     title: PropTypes.string,
     content: PropTypes.string,
-    actionButton: PropTypes.string
+    actionButton: PropTypes.string,
+    redirectUrl: PropTypes.string
   })
 }
 

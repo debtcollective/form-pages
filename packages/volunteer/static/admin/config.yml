@@ -43,3 +43,6 @@ collections:
               - label: 'Action button'
                 name: 'actionButton'
                 widget: 'string'
+              - label: 'After submit redirect URL'
+                name: 'redirectUrl'
+                widget: 'string'
