@@ -9,7 +9,7 @@ collections:
   - name: 'pages'
     label: 'Pages'
     files:
-      - file: 'src/pages/index.md'
+      - file: 'packages/volunteer/src/pages/index.md'
         label: 'Home'
         name: 'home'
         fields:
@@ -23,5 +23,4 @@ collections:
             fields:
               - label: 'Title'
                 name: 'title'
-                widget: 'list'
-                allow_add: true
+                widget: 'string'
