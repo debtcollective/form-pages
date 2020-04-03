@@ -20,33 +20,21 @@ function encode(data) {
     .join('&')
 }
 
-const AfterSubmitModal = ({
-  show,
-  onClose = _.noop,
-  onPrimaryClick = _.noop
-}) => {
+const AfterSubmitModal = ({ show, onClose, onPrimaryClick, copy }) => {
   return (
     <Modal show={show}>
       <Modal.Header closeButton>
-        <Modal.Title>Thanks for filling out our form!</Modal.Title>
+        <Modal.Title>{copy.title}</Modal.Title>
       </Modal.Header>
 
-      <Modal.Body>
-        <p>
-          We’ll be in touch soon{' '}
-          <span role="img" aria-label="smile">
-            😀
-          </span>
-          . Meanwhile visit our community.
-        </p>
-      </Modal.Body>
+      <Modal.Body>{copy.content}</Modal.Body>
 
       <Modal.Footer>
         <Button variant="secondary" onClick={() => onClose()}>
           Close
         </Button>
         <Button variant="primary" onClick={() => onPrimaryClick()}>
-          Go to community
+          {copy.actionButton}
         </Button>
       </Modal.Footer>
     </Modal>
@@ -56,10 +44,21 @@ const AfterSubmitModal = ({
 AfterSubmitModal.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func,
-  onPrimaryClick: PropTypes.func
+  onPrimaryClick: PropTypes.func,
+  copy: PropTypes.shape({
+    title: PropTypes.string,
+    content: PropTypes.string,
+    actionButton: PropTypes.string
+  })
 }
 
-const VolunteerForm = ({ name }) => {
+AfterSubmitModal.defaultProps = {
+  onClose: _.noop,
+  onPrimaryClick: _.noop,
+  copy: { title: '', content: '', actionButton: 'Ok' }
+}
+
+const VolunteerForm = ({ name, modal }) => {
   const {
     errors,
     handleSubmit,
@@ -127,6 +126,7 @@ const VolunteerForm = ({ name }) => {
         show={show}
         onClose={handleModalClose}
         onPrimaryClick={afterSubmitRedirect}
+        copy={modal}
       />
       <form
         name={name}
@@ -330,15 +330,15 @@ const VolunteerForm = ({ name }) => {
                 placeholder="DebtCollective"
                 name="facebook"
                 ref={register}
-                isInvalid={!!errors.twitter}
+                isInvalid={!!errors.facebook}
               />
             </InputGroup>
             <Form.Control.Feedback type="invalid">
-              {errors.twitter && errors.twitter.message}
+              {errors.facebook && errors.facebook.message}
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group controlId="facebook">
+          <Form.Group controlId="instagram">
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
                 <InputGroup.Text id="basic-addon1">
@@ -350,11 +350,11 @@ const VolunteerForm = ({ name }) => {
                 placeholder="DebtCollective"
                 name="instagram"
                 ref={register}
-                isInvalid={!!errors.twitter}
+                isInvalid={!!errors.instagram}
               />
             </InputGroup>
             <Form.Control.Feedback type="invalid">
-              {errors.twitter && errors.twitter.message}
+              {errors.instagram && errors.instagram.message}
             </Form.Control.Feedback>
           </Form.Group>
         </div>
@@ -382,7 +382,12 @@ const VolunteerForm = ({ name }) => {
 }
 
 VolunteerForm.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  modal: PropTypes.shape({
+    title: PropTypes.string,
+    content: PropTypes.string,
+    actionButton: PropTypes.string
+  })
 }
 
 VolunteerForm.defaultValues = {}

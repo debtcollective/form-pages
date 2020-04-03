@@ -2,35 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import {
-  Hero,
-  Layout,
-  Content,
-  Form,
-  ReadProgress,
-  Mailto
-} from '../components'
+import { Hero, Layout, Content, Form, ReadProgress } from '../components'
 
-export const IndexPageTemplate = ({ hero }) => {
+export const IndexPageTemplate = ({ hero, modal }) => {
   return (
     <>
       <Hero title={hero.title} />
-      <p className="text-center mb-0 mt-2">
-        Submit this form if you’d like to get involved in The Debt Collective.
-        Someone will be in touch with you soon!
-      </p>
-      <p className="text-center mb-0">
-        If you are looking to start a local group/collective, please email{' '}
-        <Mailto email="winter@debtcollective.org">
-          winter@debtcollective.org
-        </Mailto>
-        .
-      </p>
-      <p className="text-center mb-0 mt-2">
-        <i>We will keep your information as secure and private as possible.</i>
-      </p>
+      <div dangerouslySetInnerHTML={{ __html: hero.subtitle }} />
       <Content>
-        <Form name="volunteers" />
+        <Form name="volunteers" modal={modal} />
       </Content>
       <ReadProgress />
     </>
@@ -40,10 +20,12 @@ export const IndexPageTemplate = ({ hero }) => {
 IndexPageTemplate.propTypes = {
   hero: PropTypes.shape({
     title: PropTypes.string,
-    button: PropTypes.string
+    subtitle: PropTypes.string
   }),
-  letter: PropTypes.shape({
-    text: PropTypes.string
+  modal: PropTypes.shape({
+    title: PropTypes.string,
+    content: PropTypes.string,
+    actionButton: PropTypes.string
   })
 }
 
@@ -75,7 +57,12 @@ export const pageQuery = graphql`
       frontmatter {
         hero {
           title
-          button
+          subtitle
+        }
+        modal {
+          title
+          content
+          actionButton
         }
       }
     }
