@@ -30,7 +30,17 @@ export const validationSchema = yup.object().shape({
     .required('Phone number is a required field')
     .min(8, 'Phone number must be at least 8 characters'),
   twitter: yup.string(),
-  skills: yup.array().of(yup.string()),
+  skills: yup
+    .array()
+    .of(yup.string())
+    .when('otherSkills', {
+      is: val => !!val,
+      then: yup.array().of(yup.string()),
+      otherwise: yup
+        .array()
+        .of(yup.string())
+        .min(1, 'Select at least ${min} or fill other skills')
+    }),
   otherSkills: yup.string(),
   username: yup.string()
 })
