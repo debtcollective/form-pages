@@ -140,7 +140,7 @@ export const CountryDropdownField = ({
 
   return (
     <CountryDropdown
-      class={cssClasses}
+      className={cssClasses}
       name={name}
       value={country}
       onChange={value => {
@@ -181,7 +181,7 @@ export const RegionDropdownField = ({
 
   return (
     <RegionDropdown
-      class={cssClasses}
+      className={cssClasses}
       name={name}
       country={country}
       value={region}

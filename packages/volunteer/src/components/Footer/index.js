@@ -1,9 +1,9 @@
-import React from "react";
-import logo from "../../img/logo-dark.svg";
-import "./styles.scss";
+import React from 'react'
+import logo from '../../img/logo-dark.svg'
+import './styles.scss'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   return (
     <div className="footer">
@@ -12,7 +12,11 @@ const Footer = () => {
           <div className="footer__list col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Organize</h6>
             <div className="footer__list-item">
-              <a href="https://community.debtcollective.org" target="_blank">
+              <a
+                href="https://community.debtcollective.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Community
               </a>
             </div>
@@ -23,12 +27,17 @@ const Footer = () => {
               <a
                 href="https://community.debtcollective.org/calendar"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Events
               </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://tools.debtcollective.org" target="_blank">
+              <a
+                href="https://tools.debtcollective.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Dispute your Debt
               </a>
             </div>
@@ -36,17 +45,29 @@ const Footer = () => {
           <div className="footer__list col-lg-2 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Learn</h6>
             <div className="footer__list-item">
-              <a href="https://powerreport.debtcollective.org" target="_blank">
+              <a
+                href="https://powerreport.debtcollective.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 The Power Report
               </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://debtcollective.org/#about" target="_blank">
+              <a
+                href="https://debtcollective.org/#about"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 About Us
               </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://wiki.debtcollective.org" target="_blank">
+              <a
+                href="https://wiki.debtcollective.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Community Wiki
               </a>
             </div>
@@ -57,17 +78,26 @@ const Footer = () => {
               <a
                 href="https://tools.debtcollective.org/contact"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Contact
               </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://debtcollective.org/donate" target="_blank">
+              <a
+                href="https://debtcollective.org/donate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Donate
               </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://github.com/debtcollective" target="_blank">
+              <a
+                href="https://github.com/debtcollective"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Open Source
               </a>
             </div>
@@ -119,7 +149,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

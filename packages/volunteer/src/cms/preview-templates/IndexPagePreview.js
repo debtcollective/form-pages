@@ -5,7 +5,7 @@ import { IndexPageTemplate } from '../../templates/index-page'
 const IndexPagePreview = ({ entry }) => {
   // NOTE: in this case data represents the content of `src/pages/index.md`
   const data = entry.getIn(['data']).toJS()
-  const { hero = {} } = data;
+  const { hero = {} } = data
 
   if (data) {
     return <IndexPageTemplate hero={hero} />

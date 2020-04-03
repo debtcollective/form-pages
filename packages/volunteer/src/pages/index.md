@@ -1,12 +1,22 @@
 ---
 templateKey: index-page
 hero:
-  title: Volunteer to help <br/>the Debt Collective build power!
+  title: Volunteer to help <br/>The Debt Collective build power!
   subtitle: >-
-    Submit this form if you’d like to get involved in the Debt Collective. If
-    you are looking to start a local group/collective, please email
-    winter@debtcollective.org instead. <i>We’ll review your submission and get
-    back to you soon. We will keep your information as secure and private as
-    possible.</i>
-  button: Sign your name
+    <p class="text-center mb-0 mt-2">
+      Submit this form if you’d like to get involved in The Debt Collective. Someone will be in touch with you soon!
+    </p>
+    <p class="text-center mb-0">
+      If you are looking to start a local group/collective, please email <a href="mailto:winter@debtcollective.org">winter@debtcollective.org</a>.
+    </p>
+    <p class="text-center mb-0 mt-2">
+      <i>We will keep your information as secure and private as possible.</i>
+    </p>
+  button: Submit
+modal:
+  title: Thanks for filling out our form!
+  content: >-
+    We'll be in touch soon 🙂. Visit our community platform to connect with other Debt Collective members.
+  actionButton: Go to community
+  redirectUrl: https://community.debtcolelctive.org
 ---
