@@ -1,5 +1,5 @@
 {
-  "name": "volunteer-form-page",
+  "name": "@debtcollective/volunteer-form-page",
   "description": "Volunteer form page",
   "private": true,
   "version": "1.1.3",
