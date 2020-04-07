@@ -29,7 +29,7 @@ const Layout = ({
       />
       <Header />
       <div id="main" className="main">
-        {children}
+        <div className="container">{children}</div>
       </div>
       <Footer />
     </>
