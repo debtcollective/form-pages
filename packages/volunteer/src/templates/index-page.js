@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-
-import { Hero, Layout, Content, Form, ReadProgress } from '../components'
+import { Hero, Layout, Content, ReadProgress } from 'common/components'
+import { Form } from '../components'
 
 export const IndexPageTemplate = ({ hero, modal }) => {
   return (
@@ -20,18 +20,18 @@ export const IndexPageTemplate = ({ hero, modal }) => {
 IndexPageTemplate.propTypes = {
   hero: PropTypes.shape({
     title: PropTypes.string,
-    subtitle: PropTypes.string
+    subtitle: PropTypes.string,
   }),
   modal: PropTypes.shape({
     title: PropTypes.string,
     content: PropTypes.string,
-    actionButton: PropTypes.string
-  })
+    actionButton: PropTypes.string,
+  }),
 }
 
 const IndexPage = ({ data }) => {
   const {
-    markdownRemark: { frontmatter }
+    markdownRemark: { frontmatter },
   } = data
 
   return (
@@ -44,9 +44,9 @@ const IndexPage = ({ data }) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object
-    })
-  })
+      frontmatter: PropTypes.object,
+    }),
+  }),
 }
 
 export default IndexPage
