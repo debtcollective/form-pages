@@ -32,12 +32,12 @@ export const validationSchema = yup.object().shape({
         .of(yup.string())
         .min(1, 'Select at least ${min} or fill other skills'),
     }),
-  focusRegion: yup.string().required('This field is required'),
-  areYouInDebt: yup.boolean(),
   // Share a bit about your background and interest*:
   // We are using separated fields for this question
-  areYouOnStrike: yup.boolean(),
-  whyStartAChapter: yup.boolean(),
-  organizingExperience: yup.boolean(),
+  locationToFocusOn: yup.string().required('This field is required'),
+  areYouInDebt: yup.string().oneOf(['Yes', 'No'], 'Choose Yes or No'),
+  areYouOnStrike: yup.string().oneOf(['Yes', 'No'], 'Choose Yes or No'),
+  organizingExperience: yup.string().oneOf(['Yes', 'No'], 'Choose Yes or No'),
+  whyStartAChapter: yup.string().required('This field is required'),
   username: yup.string(),
 })

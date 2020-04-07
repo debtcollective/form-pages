@@ -208,7 +208,7 @@ const VolunteerForm = ({ name, modal }) => {
               ref={register}
               isInvalid={!!errors.zip}
             />
-            {!!errors.city && <div className="is-invalid" />}
+            {!!errors.zip && <div className="is-invalid" />}
             <Form.Control.Feedback type="invalid">
               {errors.zip && errors.zip.message}
             </Form.Control.Feedback>
@@ -261,8 +261,137 @@ const VolunteerForm = ({ name, modal }) => {
 
         <div className="form-section mt-4">
           <h3>Share a bit about your background and interest</h3>
-        </div>
+          <Form.Group controlId="locationToFocusOn">
+            <Form.Label>
+              What is the town/city/state/campus/workplace/region you’d like to
+              focus on?{required}
+            </Form.Label>
+            <Form.Control
+              type="text"
+              placeholder=""
+              name="locationToFocusOn"
+              ref={register}
+              isInvalid={!!errors.locationToFocusOn}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.locationToFocusOn && errors.locationToFocusOn.message}
+            </Form.Control.Feedback>
+          </Form.Group>
 
+          <Form.Group controlId="areYouInDebt">
+            <Form.Label>Are you in debt?{required}</Form.Label>
+            <Form.Check
+              type="radio"
+              id="areYouInDebtFieldYes"
+              name="areYouInDebt"
+              value="Yes"
+              ref={register}
+              label="Yes"
+              className="mb-1"
+              isInvalid={!!errors.areYouInDebt}
+            />
+            <Form.Check
+              id="areYouInDebtFieldNo"
+              isInvalid={!!errors.areYouInDebt}
+            >
+              <Form.Check.Input
+                name="areYouInDebt"
+                isInvalid={!!errors.areYouInDebt}
+                type="radio"
+                ref={register}
+                value="No"
+              />
+              <Form.Check.Label>No</Form.Check.Label>
+            </Form.Check>
+            {!!errors.areYouInDebt && <div className="is-invalid" />}
+            <Form.Control.Feedback type="invalid">
+              {errors.areYouInDebt && errors.areYouInDebt.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group controlId="areYouOnStrike">
+            <Form.Label>Are you on Strike?{required}</Form.Label>
+            <Form.Check
+              type="radio"
+              id="areYouOnStrikeFieldYes"
+              name="areYouOnStrike"
+              value="Yes"
+              ref={register}
+              label="Yes"
+              className="mb-1"
+              isInvalid={!!errors.areYouOnStrike}
+            />
+            <Form.Check
+              id="areYouOnStrikeFieldNo"
+              isInvalid={!!errors.areYouOnStrike}
+            >
+              <Form.Check.Input
+                name="areYouOnStrike"
+                isInvalid={!!errors.areYouOnStrike}
+                type="radio"
+                ref={register}
+                value="No"
+              />
+              <Form.Check.Label>No</Form.Check.Label>
+            </Form.Check>
+            {!!errors.areYouOnStrike && <div className="is-invalid" />}
+            <Form.Control.Feedback type="invalid">
+              {errors.areYouOnStrike && errors.areYouOnStrike.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group controlId="organizingExperience">
+            <Form.Label>
+              Do you have activism or organizing experience?{required}
+            </Form.Label>
+            <Form.Check
+              type="radio"
+              id="organizingExperienceYes"
+              name="organizingExperience"
+              value="Yes"
+              ref={register}
+              label="Yes"
+              className="mb-1"
+              isInvalid={!!errors.organizingExperience}
+            />
+            <Form.Check
+              id="organizingExperienceNo"
+              isInvalid={!!errors.organizingExperience}
+            >
+              <Form.Check.Input
+                name="organizingExperience"
+                isInvalid={!!errors.organizingExperience}
+                type="radio"
+                ref={register}
+                value="No"
+              />
+              <Form.Check.Label>No</Form.Check.Label>
+            </Form.Check>
+            {!!errors.organizingExperience && <div className="is-invalid" />}
+            <Form.Control.Feedback type="invalid">
+              {errors.organizingExperience &&
+                errors.organizingExperience.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group controlId="whyStartAChapter">
+            <Form.Label>
+              Why do you want to start a chapter?{required}
+            </Form.Label>
+            <Form.Control
+              type="text"
+              placeholder=""
+              name="whyStartAChapter"
+              ref={register}
+              as="textarea"
+              rows="5"
+              isInvalid={!!errors.whyStartAChapter}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.whyStartAChapter && errors.whyStartAChapter.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+        </div>
         <div className="form-section mt-4">
           <h3 className="mb-3">Social networks</h3>
           <Form.Group controlId="twitter">
