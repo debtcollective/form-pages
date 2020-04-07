@@ -1,48 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 
-function SEO({ title, description, lang, meta }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            url
-            image
-            twitterUsername
-            facebookPage
-          }
-        }
-      }
-    `
-  );
-
-  const metaDescription = description || site.siteMetadata.description;
-  const ogTitle = title || site.siteMetadata.title;
-
+function SEO({ title, description, lang, url, image, twitterUsername, meta }) {
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={ogTitle}
+      title={title}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:title`,
-          content: ogTitle,
+          content: title,
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:type`,
@@ -50,11 +28,11 @@ function SEO({ title, description, lang, meta }) {
         },
         {
           property: `og:image`,
-          content: site.siteMetadata.image,
+          content: image,
         },
         {
           property: `og:url`,
-          content: site.siteMetadata.url,
+          content: url,
         },
         {
           name: `twitter:card`,
@@ -62,36 +40,43 @@ function SEO({ title, description, lang, meta }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.twitterUsername,
+          content: twitterUsername,
+        },
+        {
+          name: `twitter:site`,
+          content: twitterUsername,
         },
         {
           name: `twitter:title`,
-          content: ogTitle,
+          content: title,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           name: `twitter:image`,
-          content: site.siteMetadata.image,
+          content: image,
         },
       ].concat(meta)}
     />
-  );
+  )
 }
 
 SEO.defaultProps = {
+  description: ``,
   lang: `en`,
   meta: [],
-  description: ``,
-};
+}
 
 SEO.propTypes = {
   description: PropTypes.string,
+  image: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
-};
+  twitterUsername: PropTypes.string,
+  url: PropTypes.string,
+}
 
-export default SEO;
+export default SEO

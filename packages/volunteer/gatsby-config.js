@@ -12,7 +12,6 @@ module.exports = {
     description: `If you’d like to get involved in The Debt Collective or if you are looking to start a local group/collective, keep reading.`,
     author: 'Debt Collective',
     twitterUsername: `@0debtzone`,
-    facebookPage: 'https://www.facebook.com/DebtCollective',
     image: `${process.env.SITE_URL || 'localhost'}/img/seo.png`,
     url: process.env.SITE_URL || 'localhost',
   },
