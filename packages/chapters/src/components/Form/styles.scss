@@ -1,0 +1,26 @@
+@import '../../styles/core';
+
+.action-detail {
+  .form-label {
+    margin-bottom: 0;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+.form-label {
+  color: $black;
+}
+
+.form-control.form-control {
+  color: $black;
+}
+
+.form-check {
+  .invalid-feedback {
+    display: none !important;
+  }
+}

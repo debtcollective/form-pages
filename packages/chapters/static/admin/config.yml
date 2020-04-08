@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'pages'
+    label: 'Pages'
+    files:
+      - file: 'packages/volunteer/src/pages/index.md'
+        label: 'Home'
+        name: 'home'
+        fields:
+          - label: 'Template Key'
+            name: 'templateKey'
+            widget: 'hidden'
+            default: 'index-page'
+          - label: 'Hero Section'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - label: 'Title'
+                name: 'title'
+                widget: 'text'
+              - label: 'Subtitle'
+                name: 'subtitle'
+                widget: 'text'
+              - label: 'Button'
+                name: 'button'
+                widget: 'string'
+          - label: 'Modal'
+            name: 'modal'
+            widget: 'object'
+            fields:
+              - label: 'Title'
+                name: 'title'
+                widget: 'string'
+              - label: 'Content'
+                name: 'content'
+                widget: 'text'
+              - label: 'Action button'
+                name: 'actionButton'
+                widget: 'string'
+              - label: 'After submit redirect URL'
+                name: 'redirectUrl'
+                widget: 'string'

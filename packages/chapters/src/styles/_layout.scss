@@ -1,0 +1,12 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: $body-gradient;
+}
+
+.main {
+  padding-top: $header-height-md;
+}

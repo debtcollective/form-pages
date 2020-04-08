@@ -1,0 +1,51 @@
+/**
+ * Bootstrap Theme
+ */
+$blue: #007bff;
+$light-blue: #dbf8ff;
+$red: #ee3514;
+$green: #2dcbad;
+$beige: #fcfbf7;
+$gray: #2b2b2b;
+$black: #000000;
+$white: #ffffff;
+
+$link-color: $blue;
+
+$footer-bg: $gray;
+$footer-title: #828282;
+
+$body-bg: $light-blue;
+$body-gradient: linear-gradient(180deg, $light-blue 0%, $beige 100%);
+
+$primary: $green;
+
+$font-family-sans-serif: 'Libre Franklin', sans-serif;
+$font-family-monospace: 'More Gothic Bold', Impact, sans-serif;
+$font-weight-bold: 600;
+
+// this will allow us to create better responsive font sizes
+$display1-size: 6em;
+$display2-size: 8vw;
+$display3-size: 12.5vw;
+$display4-size: 5.5vw;
+
+$display1-weight: $font-weight-bold;
+$display2-weight: $font-weight-bold;
+$display3-weight: $font-weight-bold;
+$display4-weight: $font-weight-bold;
+
+// Buttons
+$btn-padding-y: 0.75rem;
+$btn-padding-x: 1.5rem;
+$btn-padding-y-lg: 0.75rem;
+$btn-padding-x-lg: 1.5rem;
+
+// Header
+$header-height-sm: 4rem;
+$header-height-md: 8rem;
+
+// Bootstrap required
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
