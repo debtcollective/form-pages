@@ -10,7 +10,7 @@ export const IndexPageTemplate = ({ hero, modal }) => {
       <Hero title={hero.title} />
       <div dangerouslySetInnerHTML={{ __html: hero.subtitle }} />
       <Content>
-        <Form name="volunteers" modal={modal} />
+        <Form name="chapters" modal={modal} />
       </Content>
       <ReadProgress />
     </>
