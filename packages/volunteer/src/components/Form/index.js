@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 import { Button, Form, InputGroup, Modal } from 'react-bootstrap'
 import Recaptcha from 'react-google-recaptcha'
-import { CountryDropdownField, RegionDropdownField } from './fields'
+import { CountryDropdownField, RegionDropdownField } from 'common/components'
 import { validationSchema, skills } from './schema'
 import _ from 'lodash'
 import './styles.scss'
@@ -16,7 +16,7 @@ const RECAPTCHA_KEY =
 
 function encode(data) {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&')
 }
 
@@ -48,14 +48,14 @@ AfterSubmitModal.propTypes = {
   copy: PropTypes.shape({
     title: PropTypes.string,
     content: PropTypes.string,
-    actionButton: PropTypes.string
-  })
+    actionButton: PropTypes.string,
+  }),
 }
 
 AfterSubmitModal.defaultProps = {
   onClose: _.noop,
   onPrimaryClick: _.noop,
-  copy: { title: '', content: '', actionButton: 'Ok' }
+  copy: { title: '', content: '', actionButton: 'Ok' },
 }
 
 const VolunteerForm = ({ name, modal }) => {
@@ -66,9 +66,9 @@ const VolunteerForm = ({ name, modal }) => {
     reset,
     setValue,
     unregister,
-    watch
+    watch,
   } = useForm({
-    validationSchema: validationSchema
+    validationSchema: validationSchema,
   })
   const [submitted, setSubmitted] = useState(false)
   const [show, setShow] = useState(false)
@@ -89,7 +89,7 @@ const VolunteerForm = ({ name, modal }) => {
   // Watching country to pass it to state dropdown
   const country = watch('country')
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     // Don't submit unless it verifies the captcha
     if (!recaptchaToken) {
       return false
@@ -99,19 +99,19 @@ const VolunteerForm = ({ name, modal }) => {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: encode({
         'form-name': name,
         'g-recaptcha-response': recaptchaToken,
-        ...data
-      })
+        ...data,
+      }),
     })
       .then(() => {
         setSubmitted(true)
         handleModalShow()
       })
-      .catch(e => Sentry.captureException(e))
+      .catch((e) => Sentry.captureException(e))
   }
 
   const afterSubmitRedirect = () => {
@@ -262,7 +262,7 @@ const VolunteerForm = ({ name, modal }) => {
           <h3>Skills</h3>
           <Form.Group controlId="skills">
             <Form.Label>I have background/skills with:</Form.Label>
-            {skills.map(skill => (
+            {skills.map((skill) => (
               <Form.Check
                 type="checkbox"
                 key={skill}
@@ -368,7 +368,7 @@ const VolunteerForm = ({ name, modal }) => {
           <Recaptcha
             className="field"
             sitekey={RECAPTCHA_KEY}
-            onChange={value => setRecaptchaToken(value)}
+            onChange={(value) => setRecaptchaToken(value)}
           />
         </Form.Group>
 
@@ -388,8 +388,8 @@ VolunteerForm.propTypes = {
     title: PropTypes.string,
     content: PropTypes.string,
     actionButton: PropTypes.string,
-    redirectUrl: PropTypes.string
-  })
+    redirectUrl: PropTypes.string,
+  }),
 }
 
 VolunteerForm.defaultValues = {}

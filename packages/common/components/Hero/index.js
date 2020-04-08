@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignature } from '@fortawesome/free-solid-svg-icons'
 import styles from './styles.module.scss'
 
 const Hero = ({ title, button, onButtonClick }) => {
@@ -11,7 +9,6 @@ const Hero = ({ title, button, onButtonClick }) => {
   if (button) {
     ctaButton = (
       <Button className={`mt-2 mt-lg-3 btn-lg`} onClick={() => onButtonClick()}>
-        <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" width="32" />
         {button}
       </Button>
     )
@@ -33,7 +30,7 @@ const Hero = ({ title, button, onButtonClick }) => {
 Hero.propTypes = {
   title: PropTypes.string,
   button: PropTypes.string,
-  onButtonClick: PropTypes.func
+  onButtonClick: PropTypes.func,
 }
 
 export default Hero
