@@ -20,9 +20,9 @@ function encode(data) {
     .join('&')
 }
 
-const AfterSubmitModal = ({ show, onClose, onPrimaryClick, copy }) => {
+const AfterSubmitModal = ({ show, onHide, onPrimaryClick, copy }) => {
   return (
-    <Modal show={show}>
+    <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
         <Modal.Title>{copy.title}</Modal.Title>
       </Modal.Header>
@@ -30,7 +30,7 @@ const AfterSubmitModal = ({ show, onClose, onPrimaryClick, copy }) => {
       <Modal.Body>{copy.content}</Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => onClose()}>
+        <Button variant="secondary" onClick={() => onHide()}>
           Close
         </Button>
         <Button variant="primary" onClick={() => onPrimaryClick()}>
@@ -43,7 +43,7 @@ const AfterSubmitModal = ({ show, onClose, onPrimaryClick, copy }) => {
 
 AfterSubmitModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  onClose: PropTypes.func,
+  onHide: PropTypes.func,
   onPrimaryClick: PropTypes.func,
   copy: PropTypes.shape({
     title: PropTypes.string,
@@ -53,7 +53,7 @@ AfterSubmitModal.propTypes = {
 }
 
 AfterSubmitModal.defaultProps = {
-  onClose: _.noop,
+  onHide: _.noop,
   onPrimaryClick: _.noop,
   copy: { title: '', content: '', actionButton: 'Ok' },
 }
@@ -124,7 +124,7 @@ const VolunteerForm = ({ name, modal }) => {
     <>
       <AfterSubmitModal
         show={show}
-        onClose={handleModalClose}
+        onHide={handleModalClose}
         onPrimaryClick={afterSubmitRedirect}
         copy={modal}
       />

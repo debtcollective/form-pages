@@ -125,6 +125,7 @@ const Footer = () => {
                 <a
                   href="https://community.debtcollective.org/tos"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Terms and Conditions
                 </a>
@@ -138,7 +139,11 @@ const Footer = () => {
           <div className="col">
             <div className="footer__netlify-logo">
               Hosted on
-              <a href="https://www.netlify.com/" target="_blank">
+              <a
+                href="https://www.netlify.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src="https://www.netlify.com/img/press/logos/full-logo-dark-simple.svg"
                   alt="netlify logo"
