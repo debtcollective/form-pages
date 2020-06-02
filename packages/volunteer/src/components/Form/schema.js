@@ -6,7 +6,8 @@ export const skills = [
   'Digital/Graphic design',
   'Web development',
   'Outreach (phone calls & emails)',
-  'Accessibility/translation/captioning'
+  'Accessibility/translation/captioning',
+  'Community organizing',
 ]
 
 export const validationSchema = yup.object().shape({
@@ -34,13 +35,13 @@ export const validationSchema = yup.object().shape({
     .array()
     .of(yup.string())
     .when('otherSkills', {
-      is: val => !!val,
+      is: (val) => !!val,
       then: yup.array().of(yup.string()),
       otherwise: yup
         .array()
         .of(yup.string())
-        .min(1, 'Select at least ${min} or fill other skills')
+        .min(1, 'Select at least ${min} or fill other skills'),
     }),
   otherSkills: yup.string(),
-  username: yup.string()
+  username: yup.string(),
 })
