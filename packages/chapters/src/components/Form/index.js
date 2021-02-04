@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { Button, Form, InputGroup, Modal } from 'react-bootstrap'
 import Recaptcha from 'react-google-recaptcha'
 import { CountryDropdownField, RegionDropdownField } from 'common/components'
-import { validationSchema } from './schema'
+import { validationSchema, nationalWorkingGroups } from './schema'
 
 import _ from 'lodash'
 import './styles.scss'
@@ -89,6 +89,9 @@ const VolunteerForm = ({ name, modal }) => {
 
   // Watching country to pass it to state dropdown
   const country = watch('country')
+
+  // Watching country to pass it to state dropdown
+  const organizingExperience = watch('organizingExperience')
 
   const onSubmit = (data) => {
     // Don't submit unless it verifies the captcha
@@ -278,6 +281,45 @@ const VolunteerForm = ({ name, modal }) => {
             </Form.Control.Feedback>
           </Form.Group>
 
+          <Form.Group controlId="nationalWorkingGroups">
+            <Form.Label>
+              Are you interested in joining any of our national working groups?
+              Read the descriptions here and then indicate below:
+            </Form.Label>
+            {nationalWorkingGroups.map((group) => (
+              <Form.Check
+                type="checkbox"
+                key={group}
+                id={`nationalWorkingGroups-${group}`}
+                name="nationalWorkingGroups"
+                label={group}
+                ref={register}
+                isInvalid={!!errors.nationalWorkingGroups}
+                value={group}
+              ></Form.Check>
+            ))}
+            {!!errors.city && <div className="is-invalid" />}
+            <Form.Control.Feedback type="invalid">
+              {errors.nationalWorkingGroups && errors.nationalWorkingGroups.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group controlId="bidenCampaign">
+            <Form.Label>
+              Are you interested in doing local work around debt or the Biden Jubilee 100 campaign?
+              If so, share a little bit about what you&apos;re thinking:
+            </Form.Label>
+            <Form.Control
+              type="text"
+              name="bidenCampaign"
+              ref={register}
+              isInvalid={!!errors.bidenCampaign}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.bidenCampaign && errors.bidenCampaign.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+
           <Form.Group controlId="areYouInDebt">
             <Form.Label>Are you in debt?{required}</Form.Label>
             <Form.Check
@@ -373,6 +415,28 @@ const VolunteerForm = ({ name, modal }) => {
                 errors.organizingExperience.message}
             </Form.Control.Feedback>
           </Form.Group>
+
+          {
+            organizingExperience === 'Yes' && (
+              <Form.Group controlId="tellUsMoreAboutOrganizingExperience">
+                <Form.Label>
+                Tell us more about that!{required}
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  name="tellUsMoreAboutOrganizingExperience"
+                  ref={register}
+                  as="textarea"
+                  rows="5"
+                  isInvalid={!!errors.tellUsMoreAboutOrganizingExperience}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {errors.tellUsMoreAboutOrganizingExperience && errors.tellUsMoreAboutOrganizingExperience.message}
+                </Form.Control.Feedback>
+              </Form.Group>
+            )
+          }
 
           <Form.Group controlId="whyStartAChapter">
             <Form.Label>
