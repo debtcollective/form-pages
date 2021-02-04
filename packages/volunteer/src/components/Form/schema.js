@@ -1,13 +1,14 @@
 import * as yup from 'yup'
 
 export const skills = [
-  'Legal research and assistance',
-  'Social media',
-  'Digital/Graphic design',
-  'Web development',
-  'Outreach (phone calls & emails)',
   'Accessibility/translation/captioning',
   'Community organizing',
+  'Digital/Graphic design',
+  'Legal research and assistance',
+  'Outreach (phone calls & emails)',
+  'Research and mapping',
+  'Social media',
+  'Web development',
 ]
 
 export const validationSchema = yup.object().shape({
@@ -40,8 +41,12 @@ export const validationSchema = yup.object().shape({
       otherwise: yup
         .array()
         .of(yup.string())
-        .min(1, 'Select at least ${min} or fill other skills'),
+        .min(1, 'Select at least ${min}'),
     }),
   otherSkills: yup.string(),
   username: yup.string(),
+  bidenCampaign: yup.string(),
+  locationToFocusOn: yup.string().required('This field is required'),
+  areYouInDebt: yup.string().oneOf(['Yes', 'No'], 'Choose Yes or No'),
+  areYouOnStrike: yup.string().oneOf(['Yes', 'No'], 'Choose Yes or No'),
 })

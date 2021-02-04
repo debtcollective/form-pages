@@ -256,6 +256,104 @@ const VolunteerForm = ({ name, modal }) => {
               {errors.username && errors.username.message}
             </Form.Control.Feedback>
           </Form.Group>
+
+          <Form.Group controlId="bidenCampaign">
+            <Form.Label>
+              Are you interested in doing local work around debt or the Biden Jubilee 100 campaign?
+              If so, share a little bit about what you&apos;re thinking:
+            </Form.Label>
+            <Form.Control
+              type="text"
+              name="bidenCampaign"
+              ref={register}
+              isInvalid={!!errors.bidenCampaign}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.bidenCampaign && errors.bidenCampaign.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+        </div>
+
+        <div className="form-section mt-4">
+          <h3>Share a bit about your background and interest</h3>
+          <Form.Group controlId="locationToFocusOn">
+            <Form.Label>
+              What is the town/city/state/campus/workplace/region you’d like to
+              focus on?{required}
+            </Form.Label>
+            <Form.Control
+              type="text"
+              placeholder=""
+              name="locationToFocusOn"
+              ref={register}
+              isInvalid={!!errors.locationToFocusOn}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.locationToFocusOn && errors.locationToFocusOn.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group controlId="areYouInDebt">
+            <Form.Label>Are you in debt?{required}</Form.Label>
+            <Form.Check
+              type="radio"
+              id="areYouInDebtFieldYes"
+              name="areYouInDebt"
+              value="Yes"
+              ref={register}
+              label="Yes"
+              className="mb-1"
+              isInvalid={!!errors.areYouInDebt}
+            />
+            <Form.Check
+              id="areYouInDebtFieldNo"
+              isInvalid={!!errors.areYouInDebt}
+            >
+              <Form.Check.Input
+                name="areYouInDebt"
+                isInvalid={!!errors.areYouInDebt}
+                type="radio"
+                ref={register}
+                value="No"
+              />
+              <Form.Check.Label>No</Form.Check.Label>
+            </Form.Check>
+            {!!errors.areYouInDebt && <div className="is-invalid" />}
+            <Form.Control.Feedback type="invalid">
+              {errors.areYouInDebt && errors.areYouInDebt.message}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group controlId="areYouOnStrike">
+            <Form.Label>Are you on Strike?{required}</Form.Label>
+            <Form.Check
+              type="radio"
+              id="areYouOnStrikeFieldYes"
+              name="areYouOnStrike"
+              value="Yes"
+              ref={register}
+              label="Yes"
+              className="mb-1"
+              isInvalid={!!errors.areYouOnStrike}
+            />
+            <Form.Check
+              id="areYouOnStrikeFieldNo"
+              isInvalid={!!errors.areYouOnStrike}
+            >
+              <Form.Check.Input
+                name="areYouOnStrike"
+                isInvalid={!!errors.areYouOnStrike}
+                type="radio"
+                ref={register}
+                value="No"
+              />
+              <Form.Check.Label>No</Form.Check.Label>
+            </Form.Check>
+            {!!errors.areYouOnStrike && <div className="is-invalid" />}
+            <Form.Control.Feedback type="invalid">
+              {errors.areYouOnStrike && errors.areYouOnStrike.message}
+            </Form.Control.Feedback>
+          </Form.Group>
         </div>
 
         <div className="form-section mt-4">
