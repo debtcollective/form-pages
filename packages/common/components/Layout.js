@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header'
-import Footer from './Footer'
 import SEO from './SEO'
 
 import '../styles/main.scss'
@@ -31,7 +30,7 @@ const Layout = ({
       <div id="main" className="main">
         <div className="container">{children}</div>
       </div>
-      <Footer />
+      <dc-footer />
     </>
   )
 }

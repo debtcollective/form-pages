@@ -895,6 +895,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@debtcollective/dc-footer-component@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.2.3.tgz#33f5051cf88b2da91da5c71ad73af14b20e325c8"
+  integrity sha512-vy9R3ofU/ylzoVY4Noo1IbEGmcxxTWL+ujNtF2vYcWt8fPsVwui8NPFsVx1Q2t7Jrz29ON6rWO2kYT9k2rzWZQ==
+  dependencies:
+    "@stencil/core" "^2.0.1"
+
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
   resolved "https://registry.yarnpkg.com/@emotion/babel-utils/-/babel-utils-0.6.10.tgz#83dbf3dfa933fae9fc566e54fbb45f14674c6ccc"
@@ -1804,6 +1811,11 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
+
+"@stencil/core@^2.0.1":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.4.0.tgz#17b45629c8986e35dcbce3f7dab7d64beede83f2"
+  integrity sha512-gU6+Yyd6O0KrCSS/O6j8KKqmRo+/Dcs2fI0+APCpbAWK+nqhwDISpdnSEfGDCLMoAC08XOZCycBRk2K1VGnEcg==
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
