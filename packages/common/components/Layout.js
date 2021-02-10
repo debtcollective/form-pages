@@ -28,7 +28,7 @@ const Layout = ({
       />
       <Header />
       <div id="main" className="main">
-        <div className="container">{children}</div>
+        <main className="container">{children}</main>
       </div>
       <dc-footer />
     </>
