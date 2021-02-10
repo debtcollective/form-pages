@@ -275,7 +275,6 @@ const VolunteerForm = ({ name, modal }) => {
         </div>
 
         <div className="form-section mt-4">
-          <h3>Share a bit about your background and interest</h3>
           <Form.Group controlId="locationToFocusOn">
             <Form.Label>
               What is the town/city/state/campus/workplace/region you’d like to
