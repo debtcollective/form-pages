@@ -895,10 +895,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@debtcollective/dc-footer-component@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.2.3.tgz#33f5051cf88b2da91da5c71ad73af14b20e325c8"
-  integrity sha512-vy9R3ofU/ylzoVY4Noo1IbEGmcxxTWL+ujNtF2vYcWt8fPsVwui8NPFsVx1Q2t7Jrz29ON6rWO2kYT9k2rzWZQ==
+"@debtcollective/dc-footer-component@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-footer-component/-/dc-footer-component-0.2.4.tgz#9dc07bd191f694c9168322f2f631ba267fc8499b"
+  integrity sha512-NYuKSAOFbcf3FlCFJMbqTjbjpZIPg8z5eLrwGayryGVgzPDtZE5cJevp6HXI8123iOJrehxP/bqYsXe4ytIeHw==
   dependencies:
     "@stencil/core" "^2.0.1"
 

@@ -58,8 +58,8 @@ const Header = () => {
                     width="100%"
                   />
                 </Link>
-                <div className="d-none d-xl-flex">
-                  <ul className="nav align-items-center" role="navigation">
+                <nav className="d-none d-xl-flex">
+                  <ul className="nav align-items-center">
                     <li className="nav-item">
                       <a
                         className="nav-link"
@@ -101,7 +101,7 @@ const Header = () => {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </nav>
               </div>
             </div>
             <div className="col-3 col-lg-3">
@@ -142,8 +142,8 @@ const Header = () => {
         </div>
       </header>
       <Collapse in={open}>
-        <div id="slider-nav" className="slider-nav d-xl-none">
-          <ul className="nav flex-column" role="navigation">
+        <nav id="slider-nav" className="slider-nav d-xl-none">
+          <ul className="nav flex-column">
             <li className="nav-item">
               <a
                 className="nav-link"
@@ -185,7 +185,7 @@ const Header = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </nav>
       </Collapse>
     </>
   )

@@ -137,7 +137,7 @@ const VolunteerForm = ({ name, modal }) => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="form-section">
-          <h3 className="mb-3">Personal information</h3>
+          <h2 className="mb-3">Personal information</h2>
           <Form.Group controlId="fullName">
             <Form.Label>Full name{required}</Form.Label>
             <Form.Control
@@ -275,7 +275,6 @@ const VolunteerForm = ({ name, modal }) => {
         </div>
 
         <div className="form-section mt-4">
-          <h3>Share a bit about your background and interest</h3>
           <Form.Group controlId="locationToFocusOn">
             <Form.Label>
               What is the town/city/state/campus/workplace/region you’d like to
@@ -357,7 +356,7 @@ const VolunteerForm = ({ name, modal }) => {
         </div>
 
         <div className="form-section mt-4">
-          <h3>Skills</h3>
+          <h2>Skills</h2>
           <Form.Group controlId="skills">
             <Form.Label>I have background/skills with:</Form.Label>
             {skills.map((skill) => (
@@ -396,7 +395,7 @@ const VolunteerForm = ({ name, modal }) => {
         </div>
 
         <div className="form-section mt-4">
-          <h3 className="mb-3">Social networks</h3>
+          <h2 className="mb-3">Social networks</h2>
           <Form.Group controlId="twitter">
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
@@ -420,7 +419,7 @@ const VolunteerForm = ({ name, modal }) => {
           <Form.Group controlId="facebook">
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
-                <InputGroup.Text id="basic-addon1">
+                <InputGroup.Text id="basic-addon2">
                   facebook.com/
                 </InputGroup.Text>
               </InputGroup.Prepend>
@@ -440,7 +439,7 @@ const VolunteerForm = ({ name, modal }) => {
           <Form.Group controlId="instagram">
             <InputGroup className="mb-3">
               <InputGroup.Prepend>
-                <InputGroup.Text id="basic-addon1">
+                <InputGroup.Text id="basic-addon3">
                   instagram.com/
                 </InputGroup.Text>
               </InputGroup.Prepend>

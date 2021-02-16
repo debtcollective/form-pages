@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "@debtcollective",
   "dependencies": {
-    "@debtcollective/dc-footer-component": "^0.2.3",
+    "@debtcollective/dc-footer-component": "^0.2.4",
     "bootstrap": "^4.3.1",
     "classnames": "2.2.6",
     "common": "^1.0.1",

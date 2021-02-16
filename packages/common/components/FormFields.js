@@ -141,6 +141,7 @@ export const CountryDropdownField = ({
   return (
     <CountryDropdown
       className={cssClasses}
+      aria-label="Select a country"
       name={name}
       value={country}
       onChange={value => {
@@ -184,6 +185,7 @@ export const RegionDropdownField = ({
       className={cssClasses}
       name={name}
       country={country}
+      aria-label="Select a state"
       value={region}
       onChange={value => {
         setRegion(value)
