@@ -11,7 +11,7 @@ module.exports = {
     title: `Chapters | The Debt Collective`,
     description: `We are inviting people from around the country to form local Debt Collective chapters.`,
     author: 'Debt Collective',
-    twitterUsername: `@0debtzone`,
+    twitterUsername: `StrikeDebt`,
     image: `${process.env.SITE_URL || 'localhost'}/img/seo.png`,
     url: process.env.SITE_URL || 'localhost',
   },

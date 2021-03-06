@@ -11,7 +11,7 @@ module.exports = {
     title: `Volunteer to help The Debt Collective build power! | The Debt Collective`,
     description: `If you’d like to get involved in The Debt Collective or if you are looking to start a local group/collective, keep reading.`,
     author: 'Debt Collective',
-    twitterUsername: `@0debtzone`,
+    twitterUsername: `StrikeDebt`,
     image: `${process.env.SITE_URL || 'localhost'}/img/seo.png`,
     url: process.env.SITE_URL || 'localhost',
   },
