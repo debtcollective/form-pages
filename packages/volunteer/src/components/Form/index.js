@@ -405,7 +405,7 @@ const VolunteerForm = ({ name, modal }) => {
               </InputGroup.Prepend>
               <Form.Control
                 type="text"
-                placeholder="0debtzone"
+                placeholder="StrikeDebt"
                 name="twitter"
                 ref={register}
                 isInvalid={!!errors.twitter}
