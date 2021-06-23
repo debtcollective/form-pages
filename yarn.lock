@@ -902,6 +902,11 @@
   dependencies:
     "@stencil/core" "^2.0.1"
 
+"@debtcollective/dc-header-component@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@debtcollective/dc-header-component/-/dc-header-component-3.5.0.tgz#914b20f1cb82eacd4f08d2e90d25e05ef8d1c092"
+  integrity sha512-U5mbRx7MfgznZt1ihiOU650HQ+VlnLRF5hnTqMrmdJCBbZb2vj9rGpXpdg/a/M7M9Kmg+6baXilt7dqLSL5U3g==
+
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
   resolved "https://registry.yarnpkg.com/@emotion/babel-utils/-/babel-utils-0.6.10.tgz#83dbf3dfa933fae9fc566e54fbb45f14674c6ccc"
@@ -6911,6 +6916,11 @@ gatsby-plugin-google-analytics@2.1.23:
   integrity sha512-pVGGYRnx6zIDvKPmhWaK7U2coec1F1ZIGe8326hV5E/2EtgVaVsRXAiCnGrLfHs/lEVs03t6DaemomtktM57gg==
   dependencies:
     "@babel/runtime" "^7.6.3"
+
+gatsby-plugin-google-fonts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-fonts/-/gatsby-plugin-google-fonts-1.0.1.tgz#d71054f7bf207b9a8da227380369e18e6f4e0201"
+  integrity sha512-p1NVkn27GUnDA5qHM+Z4cCcLCJIardzZXMon3640sT4xuL/AZJbsx3HEt2KY/5oZu0UXIkytkxzV2Da4rQeUIg==
 
 gatsby-plugin-netlify-cms@^4.1.6:
   version "4.2.1"
