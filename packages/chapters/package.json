@@ -6,7 +6,7 @@
   "author": "@debtcollective",
   "dependencies": {
     "@debtcollective/dc-footer-component": "^0.2.4",
-    "@debtcollective/dc-header-component": "^3.5.0",
+    "@debtcollective/dc-header-component": "^3.6.3",
     "bootstrap": "^4.3.1",
     "classnames": "2.2.6",
     "common": "^1.0.1",
